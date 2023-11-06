@@ -1,0 +1,6 @@
+FROM ccr.ccs.tencentyun.com/cky-tools/openjdk8
+EXPOSE 8080
+WORKDIR /epw_scrm
+COPY epw-scrm-xxl-job-admin/target/epw-scrm-xxl-job-admin-2.4.1-extend.jar  epw-scrm-work-api.jar
+ENV JAVA_OPTS="-Xms256M -Xmx256M -XX:PermSize=256M -XX:MaxPermSize=512M -Duser.timezone=GMT+08"
+ENTRYPOINT java ${JAVA_OPTS} -jar *.jar --spring.profiles.active=dev
